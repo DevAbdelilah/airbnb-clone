@@ -4,7 +4,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { AiFillFacebook } from "react-icons/ai";
+import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 
 import Button from "../Button";
@@ -20,8 +20,8 @@ type Props = {};
 
 function LoginModal({}: Props) {
   const router = useRouter();
-  const registerModel = useRegisterModal();
-  const loginModel = useLoginModel();
+  const registerModal = useRegisterModal();
+  const loginModal = useLoginModel();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -47,7 +47,7 @@ function LoginModal({}: Props) {
       if (callback?.ok) {
         toast.success("Login Successfully");
         router.refresh();
-        loginModel.onClose();
+        loginModal.onClose();
       } else if (callback?.error) {
         toast.error("Something Went Wrong");
       }
@@ -55,9 +55,9 @@ function LoginModal({}: Props) {
   };
 
   const toggle = useCallback(() => {
-    loginModel.onClose();
-    registerModel.onOpen();
-  }, [loginModel, registerModel]);
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -92,13 +92,13 @@ function LoginModal({}: Props) {
       />
       <Button
         outline
-        label="Continue with Facebook"
-        icon={AiFillFacebook}
-        onClick={() => signIn("facebook")}
+        label="Continue with Github"
+        icon={AiFillGithub}
+        onClick={() => signIn("github")}
       />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div>
-          {`Didn't have an Account?`}{" "}
+          First time using Airbnb?
           <span
             onClick={toggle}
             className="text-neutral-800 cursor-pointer hover:underline"
@@ -112,10 +112,10 @@ function LoginModal({}: Props) {
   return (
     <Modal
       disabled={isLoading}
-      isOpen={loginModel.isOpen}
+      isOpen={loginModal.isOpen}
       title="Login"
       actionLabel="Continue"
-      onClose={loginModel.onClose}
+      onClose={loginModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}
       footer={footerContent}
