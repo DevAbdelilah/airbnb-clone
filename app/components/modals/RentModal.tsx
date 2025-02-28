@@ -3,7 +3,7 @@
 import axios from "axios";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 import Heading from "../Heading";
@@ -62,6 +62,11 @@ function RentModal({}: Props) {
   const guestCount = watch("guestCount");
   const roomCount = watch("roomCount");
   const bathroomCount = watch("bathroomCount");
+  const imageSrc = watch("imageSrc");
+
+  useEffect(() => {
+    console.log("new", imageSrc);
+  }, [imageSrc]);
 
   const Map = useMemo(
     () =>
@@ -203,8 +208,11 @@ function RentModal({}: Props) {
           subtitle="Show guests what your place looks like!"
         />
 
-        <ImageUpload/>
-      </div>
+        <ImageUpload
+          value={imageSrc}
+          onChange={(value) => setCustomValue("imageSrc", value)}
+        />
+      </div>  
     );
   }
 
