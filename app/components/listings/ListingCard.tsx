@@ -6,7 +6,6 @@ import { Listing, Reservation } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
 
-
 type Props = {
   data: Listing;
   reservation?: Reservation;
@@ -105,6 +104,7 @@ function ListingCard({
           />
         )}
       </div>
+      {/* aaaaaaaaaaaaaaaaaaaa */}
     </div>
   );
 }
