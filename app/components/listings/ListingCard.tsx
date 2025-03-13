@@ -104,7 +104,7 @@ function ListingCard({
           />
         )}
       </div>
-      {/* aaaaaaaaaaaaaaaaaaaa */}
+   
     </div>
   );
 }
