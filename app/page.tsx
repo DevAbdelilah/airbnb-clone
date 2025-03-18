@@ -1,4 +1,3 @@
-
 import getCurrentUser from "./actions/getCurrentUser";
 import getListings, { IListingsParams } from "./actions/getListings";
 import ClientOnly from "./components/ClientOnly";
@@ -29,9 +28,9 @@ export default async function Home({ searchParams }: HomeProps) {
           {listing.map((list) => {
             return (
               <ListingCard
-                key={list.id}
-                data={list}
                 currentUser={currentUser}
+                key={listing.id}
+                data={listing}
               />
             );
           })}
