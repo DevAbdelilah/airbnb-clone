@@ -5,6 +5,10 @@ import { SafeUser } from "@/types";
 import { Listing, Reservation } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
+import { format } from "date-fns";
+import Button from "../Button";
+import Image from "next/image";
+import HeartButton from "../HeartButton";
 
 type Props = {
   data: Listing;
@@ -85,14 +89,14 @@ function ListingCard({
           </div>
         </div>
         <div className="font-semibold text-lg">
-          {location?.region}, {location?.label}
+          {location?.region} ,{location?.label}
         </div>
         <div className="font-light text-neutral-500">
           {reservationDate || data.category}
         </div>
         <div className="flex flex-row items-center gap-">
           <div className="flex gap-1 font-semibold">
-            ${price} {!reservation && <div className="font-light"> Night</div>}
+            $ {price} {!reservation && <div className="font-light"> Night</div>}
           </div>
         </div>
         {onAction && actionLabel && (
@@ -104,7 +108,6 @@ function ListingCard({
           />
         )}
       </div>
-   
     </div>
   );
 }
