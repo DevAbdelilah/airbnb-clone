@@ -1,3 +1,5 @@
+
+
 import { SafeUser } from "@/types";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -33,8 +35,10 @@ function useFavorite({ listingId, currentUser }: Props) {
         let request;
 
         if (hasFavorite) {
+          console.log(`Removing favorite: ${listingId}`);
           request = () => axios.delete(`/api/favorites/${listingId}`);
         } else {
+          console.log(`Adding favorite: ${listingId}`);
           request = () => axios.post(`/api/favorites/${listingId}`);
         }
 
@@ -45,7 +49,7 @@ function useFavorite({ listingId, currentUser }: Props) {
         toast.error("Something Went Wrong");
       }
     },
-    [currentUser, hasFavorite, listingId, loginModel]
+    [currentUser, hasFavorite, listingId, loginModel,router]
   );
 
   return {
