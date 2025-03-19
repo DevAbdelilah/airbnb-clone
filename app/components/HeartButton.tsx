@@ -11,7 +11,7 @@ type Props = {
 };
 
 function HeartButton({ listingId, currentUser }: Props) {
-  const { hasFavorite, toggleFavorite } = useFavorite({
+  const { hasFavorite , toggleFavorite } = useFavorite({
     listingId,
     currentUser,
   });

@@ -94,10 +94,9 @@ function ListingCard({
         <div className="font-light text-neutral-500">
           {reservationDate || data.category}
         </div>
-        <div className="flex flex-row items-center gap-">
-          <div className="flex gap-1 font-semibold">
-            $ {price} {!reservation && <div className="font-light"> Night</div>}
-          </div>
+        <div className="flex flex-row items-center gap-1">
+          <div className="flex gap-1 font-semibold">$ {price}</div>
+          {!reservation && <div className="font-light"> Night</div>}
         </div>
         {onAction && actionLabel && (
           <Button

@@ -28,9 +28,9 @@ export default async function Home({ searchParams }: HomeProps) {
           {listing.map((list) => {
             return (
               <ListingCard
+                data={list}
                 currentUser={currentUser}
-                key={listing.id}
-                data={listing}
+                key={list.id}
               />
             );
           })}
