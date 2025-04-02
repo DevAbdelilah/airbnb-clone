@@ -34,4 +34,3 @@ const ListingPage = async ({ params }: { params: IParams }) => {
 };
 
 export default ListingPage;
-// saaaaaaaaaaaaaaaaaaaaaa
