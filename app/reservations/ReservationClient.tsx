@@ -14,7 +14,7 @@ type Props = {
   currentUser?: SafeUser | null;
 };
 
-function TripsClient({ reservations, currentUser }: Props) {
+function ReservationsClient({ reservations, currentUser }: Props) {
   const router = useRouter();
   const [deletingId, setDeletingId] = useState("");
 
@@ -40,10 +40,7 @@ function TripsClient({ reservations, currentUser }: Props) {
 
   return (
     <Container>
-      <Heading
-        title="Trips"
-        subtitle="Where you've been and where you're going"
-      />
+      <Heading title="Reservations" subtitle="Bookings on your properties" />
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 gap-8">
         {reservations.map((reservation) => (
           <ListingCard
@@ -62,4 +59,4 @@ function TripsClient({ reservations, currentUser }: Props) {
   );
 }
 
-export default TripsClient;
+export default ReservationsClient;
