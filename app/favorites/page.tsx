@@ -2,13 +2,14 @@ import React from "react";
 import getCurrentUser from "../actions/getCurrentUser";
 import ClientOnly from "../components/ClientOnly";
 import EmptyState from "../components/EmptyState";
-import getReservation from "../actions/getReservation";
-import ReservationsClient from "./ReservationClient";
+import getFavoriteListings from "../actions/getFavoriteListings";
+import FavoritesClient from "./FavoritesClient";
 
 type Props = {};
 
-const ReservationsPage = async (props: Props) => {
+const FavoritePage = async (props: Props) => {
   const currentUser = await getCurrentUser();
+  const listings = await getFavoriteListings();
 
   if (!currentUser) {
     return (
@@ -18,16 +19,12 @@ const ReservationsPage = async (props: Props) => {
     );
   }
 
-  const reservations = await getReservation({
-    authorId: currentUser.id,
-  });
-
-  if (reservations.length === 0) {
+  if (listings.length === 0) {
     return (
       <ClientOnly>
         <EmptyState
-          title="No Reservation found"
-          subtitle="Looks like you have no reservations on your properties."
+          title="No favorites found"
+          subtitle="Looks like you have no favorite listings."
         />
       </ClientOnly>
     );
@@ -35,12 +32,9 @@ const ReservationsPage = async (props: Props) => {
 
   return (
     <ClientOnly>
-      <ReservationsClient
-        reservations={reservations}
-        currentUser={currentUser}
-      />
+      <FavoritesClient listings={listings} currentUser={currentUser} />
     </ClientOnly>
   );
 };
 
-export default ReservationsPage;
+export default FavoritePage;
