@@ -19,7 +19,7 @@ function EmptyState({
   const router = useRouter();
 
   return (
-    <motion.div   
+    <div   
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
@@ -35,7 +35,7 @@ function EmptyState({
           />
         )}
       </div>
-    </motion.div>
+    </div>
   );
 }
 
