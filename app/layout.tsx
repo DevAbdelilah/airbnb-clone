@@ -16,10 +16,6 @@ export const metadata: Metadata = {
   description: "Airbnb clone",
 };
 
-const font = Nunito({
-  subsests: ["latin"],
-});
-
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -29,7 +25,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={font.className}>
+      <body>
         <ClientOnly>
           <ToasterProvider />
           <SearchModal />
